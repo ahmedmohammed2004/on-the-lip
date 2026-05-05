@@ -1,4 +1,4 @@
-import heroProduct from "@/assets/hero-product.jpg";
+import heroProduct from "@/assets/brand-product.jpg";
 import ingredients from "@/assets/ingredients.jpg";
 import { Button } from "@/components/ui/button";
 import { Leaf, Droplets, Sparkles, ShieldCheck } from "lucide-react";
