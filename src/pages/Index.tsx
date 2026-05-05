@@ -1,4 +1,4 @@
-import heroProduct from "@/assets/hero-product.jpg";
+import heroProduct from "@/assets/brand-product.jpg";
 import ingredients from "@/assets/ingredients.jpg";
 import { Button } from "@/components/ui/button";
 import { Leaf, Droplets, Sparkles, ShieldCheck } from "lucide-react";
@@ -62,16 +62,14 @@ const Index = () => {
             </div>
 
             <div className="relative flex justify-center md:justify-end">
-              <div className="relative flex aspect-square w-full max-w-[520px] items-center justify-center">
-                <div className="absolute inset-0 animate-[spin_40s_linear_infinite] rounded-full border border-border" />
-                <div className="absolute inset-[8%] rounded-full border border-border/60" />
-                <div className="absolute inset-[18%] rounded-full bg-primary/5" />
+              <div className="relative w-full max-w-[560px]">
+                <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl" />
                 <img
                   src={heroProduct}
-                  alt="On the Lip botanical ointment jar"
-                  width={1024}
-                  height={1024}
-                  className="relative z-10 aspect-square w-[78%] rounded-full object-cover"
+                  alt="On the Lip balm — round container and lipstick tube"
+                  width={1280}
+                  height={720}
+                  className="relative z-10 w-full rounded-[2rem] object-cover"
                   style={{ boxShadow: "var(--shadow-warm)" }}
                 />
               </div>
