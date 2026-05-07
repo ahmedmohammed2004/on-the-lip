@@ -34,7 +34,7 @@ const Index = () => {
           style={{ background: "var(--gradient-warm)" }}
         >
           <div className="container mx-auto grid items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
-            <div className="space-y-7">
+            <div className="space-y-7 animate-fade-in-left">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70">
                 <Leaf className="h-3.5 w-3.5 text-primary" /> Botanical Lip Care
               </span>
@@ -48,10 +48,10 @@ const Index = () => {
                 and restore — wear it bare, or under your favorite color.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Button size="lg" className="rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90">
+                <Button size="lg" className="rounded-full bg-primary px-8 text-primary-foreground transition-transform hover:scale-[1.03] hover:bg-primary/90">
                   Shop the collection
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full border-border bg-transparent px-8 hover:bg-foreground/5">
+                <Button size="lg" variant="outline" className="rounded-full border-border bg-transparent px-8 transition-colors hover:bg-foreground/5">
                   Discover the ritual
                 </Button>
               </div>
@@ -64,9 +64,9 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="relative flex justify-center md:justify-end">
-              <div className="relative w-full max-w-[560px]">
-                <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl" />
+            <div className="relative flex justify-center md:justify-end animate-fade-in-right">
+              <div className="relative w-full max-w-[560px] animate-float">
+                <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
                 <img
                   src={heroProduct}
                   alt="On the Lip balm — round container and lipstick tube"
@@ -77,6 +77,7 @@ const Index = () => {
                 />
               </div>
             </div>
+          </div>
           </div>
         </section>
 
