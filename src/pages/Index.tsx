@@ -1,10 +1,12 @@
 import heroProduct from "@/assets/brand-product.jpg";
-import ingredients from "@/assets/ingredients.jpg";
+import ingredients from "@/assets/formula-ingredients.jpg";
 import instagramQr from "@/assets/instagram-qr.jpg";
 import { Button } from "@/components/ui/button";
 import { Leaf, Droplets, Sparkles, ShieldCheck } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
+  useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
