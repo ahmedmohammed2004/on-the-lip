@@ -208,17 +208,33 @@ const Index = () => {
 
         {/* CTA */}
         <section id="contact" className="bg-foreground text-background">
-          <div className="container mx-auto flex flex-col items-center gap-6 px-6 py-20 text-center">
-            <h2 className="font-serif text-4xl text-background md:text-5xl">
-              Ready to feel the difference?
-            </h2>
-            <p className="max-w-xl text-background/70">
-              Try On the Lip risk-free. If you don&apos;t love it within 30 days, we&apos;ll refund
-              every cent.
-            </p>
-            <Button size="lg" className="mt-2 rounded-full bg-primary px-10 text-primary-foreground hover:bg-primary/90">
-              Shop now — $18
-            </Button>
+          <div className="container mx-auto grid items-center gap-12 px-6 py-20 md:grid-cols-2">
+            <div className="flex flex-col items-start gap-6 text-left">
+              <h2 className="font-serif text-4xl text-background md:text-5xl">
+                Ready to feel the difference?
+              </h2>
+              <p className="max-w-xl text-background/70">
+                Try On the Lip risk-free. If you don&apos;t love it within 30 days, we&apos;ll refund
+                every cent.
+              </p>
+              <Button size="lg" className="mt-2 rounded-full bg-primary px-10 text-primary-foreground hover:bg-primary/90">
+                Shop now — 60 EGP
+              </Button>
+            </div>
+            <div className="flex flex-col items-center gap-4">
+              <img
+                src={instagramQr}
+                alt="Scan to follow @_on_the_lip on Instagram"
+                width={600}
+                height={750}
+                loading="lazy"
+                className="w-full max-w-xs rounded-2xl"
+                style={{ boxShadow: "var(--shadow-soft)" }}
+              />
+              <p className="text-sm uppercase tracking-[0.2em] text-background/70">
+                Follow @_on_the_lip
+              </p>
+            </div>
           </div>
         </section>
       </main>
