@@ -80,15 +80,15 @@ const Index = () => {
         {/* Marquee strip */}
         <section className="border-y border-border bg-foreground text-background">
           <div className="container mx-auto flex flex-wrap items-center justify-center gap-x-12 gap-y-3 px-6 py-5 font-serif text-sm italic">
-            <span>Shea Butter</span>
+            <span>Cocoa Butter</span>
             <span className="opacity-40">✦</span>
-            <span>Cold-Pressed Jojoba</span>
+            <span>Lanolin</span>
             <span className="opacity-40">✦</span>
-            <span>Pure Beeswax</span>
+            <span>White Petrolatum</span>
             <span className="opacity-40">✦</span>
-            <span>Sweet Almond</span>
+            <span>White Wax</span>
             <span className="opacity-40">✦</span>
-            <span>Vitamin E</span>
+            <span>Rose · Strawberry · Vanilla</span>
           </div>
         </section>
 
@@ -156,21 +156,20 @@ const Index = () => {
             <div className="space-y-6">
               <p className="text-xs uppercase tracking-[0.3em] text-primary">The Formula</p>
               <h2 className="font-serif text-4xl md:text-5xl">
-                Six ingredients.<br/>
-                <em>That&apos;s it.</em>
+                Five ingredients.<br/>
+                <em>Three scents.</em>
               </h2>
               <p className="text-foreground/70">
-                We believe lip care should be radically simple. No parabens, no phthalates, no
-                synthetic fragrance — just plants, pressed and blended with intention.
+                A radically simple base of skin-loving emollients, finished with a single
+                volatile oil. Choose your favorite scent — Rose, Strawberry, or Vanilla.
               </p>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
                 {[
-                  "Organic Shea Butter",
-                  "Cold-Pressed Jojoba Oil",
-                  "Raw Beeswax",
-                  "Sweet Almond Oil",
-                  "Vitamin E",
-                  "Vanilla Absolute",
+                  "Cocoa Butter",
+                  "Lanolin",
+                  "White Petrolatum",
+                  "White Wax",
+                  "Volatile Oil (Rose / Strawberry / Vanilla)",
                 ].map((ing) => (
                   <li key={ing} className="flex items-center gap-3 border-b border-border pb-2 text-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -178,6 +177,16 @@ const Index = () => {
                   </li>
                 ))}
               </ul>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {["Rose", "Strawberry", "Vanilla"].map((scent) => (
+                  <span
+                    key={scent}
+                    className="rounded-full border border-border bg-background px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70"
+                  >
+                    {scent}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>
