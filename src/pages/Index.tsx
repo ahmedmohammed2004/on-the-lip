@@ -97,7 +97,7 @@ const Index = () => {
 
         {/* Features */}
         <section id="product" className="container mx-auto px-6 py-24">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="reveal mx-auto max-w-2xl text-center">
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Why On the Lip</p>
             <h2 className="font-serif text-4xl md:text-5xl">A balm that does more than balm.</h2>
             <p className="mt-5 text-foreground/70">
@@ -123,13 +123,13 @@ const Index = () => {
                 title: "Subtle Sheen",
                 copy: "A naturally luminous finish — never sticky, never greasy, always wearable.",
               },
-            ].map(({ icon: Icon, title, copy }) => (
+            ].map(({ icon: Icon, title, copy }, i) => (
               <article
                 key={title}
-                className="group rounded-3xl border border-border bg-card p-8 transition-all hover:-translate-y-1"
-                style={{ boxShadow: "var(--shadow-soft)" }}
+                className="reveal hover-lift group rounded-3xl border border-border bg-card p-8"
+                style={{ boxShadow: "var(--shadow-soft)", transitionDelay: `${i * 120}ms` }}
               >
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mb-3 font-serif text-2xl italic text-primary">{title}</h3>
@@ -142,17 +142,18 @@ const Index = () => {
         {/* Ingredients */}
         <section id="ingredients" className="bg-secondary/40">
           <div className="container mx-auto grid items-center gap-16 px-6 py-24 md:grid-cols-2">
-            <div className="relative">
+            <div className="reveal relative group">
+              <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
               <img
                 src={ingredients}
-                alt="Natural lip balm ingredients flat lay"
+                alt="On the Lip balm tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose, strawberry and vanilla"
                 width={1024}
                 height={1024}
                 loading="lazy"
-                className="aspect-square w-full rounded-3xl object-cover"
+                className="relative aspect-square w-full rounded-3xl object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               />
-              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-border bg-background px-6 py-4 font-serif italic md:block">
+              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-border bg-background px-6 py-4 font-serif italic md:block animate-float">
                 <span className="text-primary">100%</span> botanical
               </div>
             </div>
