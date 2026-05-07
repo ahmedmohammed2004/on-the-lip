@@ -99,7 +99,7 @@ const Index = () => {
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Why On the Lip</p>
             <h2 className="font-serif text-4xl md:text-5xl">A balm that does more than balm.</h2>
             <p className="mt-5 text-foreground/70">
-              Formulated by a small team of herbalists in Brooklyn, every batch is hand-poured and
+              Formulated by a small team of GUC students in Cairo, Egypt, every batch is hand-poured and
               tested for the way you actually live.
             </p>
           </div>
@@ -193,17 +193,53 @@ const Index = () => {
         </section>
 
         {/* Story */}
-        <section id="story" className="container mx-auto px-6 py-24 text-center">
-          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Our Story</p>
-          <h2 className="mx-auto max-w-3xl font-serif text-4xl md:text-5xl">
-            Born from a chapped winter and a stubborn belief that
-            <em className="text-primary"> simple is better.</em>
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-foreground/70">
-            On the Lip began in a tiny apothecary kitchen in 2023, when our founder couldn&apos;t find
-            a balm that actually worked without a list of ingredients she couldn&apos;t pronounce. So
-            she made one. Then made it better. Now it&apos;s yours.
-          </p>
+        <section id="story" className="container mx-auto px-6 py-24">
+          <div className="text-center">
+            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Our Story</p>
+            <h2 className="mx-auto max-w-3xl font-serif text-4xl md:text-5xl">
+              Born from a chapped winter and a stubborn belief that
+              <em className="text-primary"> simple is better.</em>
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-foreground/70">
+              On the Lip began in a tiny apothecary kitchen in 2025, when our founder couldn&apos;t find
+              a balm that actually worked without a list of ingredients she couldn&apos;t pronounce. So
+              she made one. Then made it better. Now it&apos;s yours.
+            </p>
+          </div>
+
+          {/* Business Model Canvas */}
+          <div className="mt-20">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">The Blueprint</p>
+              <h3 className="font-serif text-3xl md:text-4xl">Business Model Canvas</h3>
+              <p className="mt-4 text-foreground/70">
+                A snapshot of how On the Lip creates, delivers, and captures value.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-4 md:grid-cols-5 md:grid-rows-3">
+              {[
+                { title: "Key Partners", body: "Local botanical suppliers · Egyptian beekeepers · GUC labs · Small-batch packaging artisans", span: "md:col-span-1 md:row-span-2" },
+                { title: "Key Activities", body: "Hand-pouring batches · Sourcing botanicals · Quality testing · Community building on Instagram", span: "md:col-span-1 md:row-span-1" },
+                { title: "Value Propositions", body: "Five-ingredient lip ointment in three signature scents — Rose, Strawberry, Vanilla. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
+                { title: "Customer Relationships", body: "Personal · DM-based support · Loyal community on @_on_the_lip · Word of mouth", span: "md:col-span-1 md:row-span-1" },
+                { title: "Customer Segments", body: "GUC students · Young adults in Cairo · Clean-beauty enthusiasts · Gift buyers", span: "md:col-span-1 md:row-span-2" },
+                { title: "Key Resources", body: "Founders' formulation expertise · Trusted ingredient supply · Brand identity · Instagram presence", span: "md:col-span-1 md:row-span-1" },
+                { title: "Channels", body: "Instagram (@_on_the_lip) · Direct messages · Campus pop-ups · Friend referrals", span: "md:col-span-1 md:row-span-1" },
+                { title: "Cost Structure", body: "Raw botanicals · Packaging · Small-batch production · Marketing on social media", span: "md:col-span-2 md:row-span-1" },
+                { title: "Revenue Streams", body: "Direct product sales at 60 EGP per unit · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
+              ].map(({ title, body, span }) => (
+                <div
+                  key={title}
+                  className={`rounded-2xl border border-border bg-card p-5 ${span}`}
+                  style={{ boxShadow: "var(--shadow-soft)" }}
+                >
+                  <h4 className="mb-2 font-serif text-sm uppercase tracking-[0.15em] text-primary">{title}</h4>
+                  <p className="text-sm text-foreground/75">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* CTA */}
