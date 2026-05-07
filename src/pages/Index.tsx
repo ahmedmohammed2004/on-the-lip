@@ -1,10 +1,12 @@
 import heroProduct from "@/assets/brand-product.jpg";
-import ingredients from "@/assets/ingredients.jpg";
+import ingredients from "@/assets/formula-ingredients.jpg";
 import instagramQr from "@/assets/instagram-qr.jpg";
 import { Button } from "@/components/ui/button";
 import { Leaf, Droplets, Sparkles, ShieldCheck } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
+  useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
@@ -32,7 +34,7 @@ const Index = () => {
           style={{ background: "var(--gradient-warm)" }}
         >
           <div className="container mx-auto grid items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
-            <div className="space-y-7">
+            <div className="space-y-7 animate-fade-in-left">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70">
                 <Leaf className="h-3.5 w-3.5 text-primary" /> Botanical Lip Care
               </span>
@@ -46,10 +48,10 @@ const Index = () => {
                 and restore — wear it bare, or under your favorite color.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Button size="lg" className="rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90">
+                <Button size="lg" className="rounded-full bg-primary px-8 text-primary-foreground transition-transform hover:scale-[1.03] hover:bg-primary/90">
                   Shop the collection
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full border-border bg-transparent px-8 hover:bg-foreground/5">
+                <Button size="lg" variant="outline" className="rounded-full border-border bg-transparent px-8 transition-colors hover:bg-foreground/5">
                   Discover the ritual
                 </Button>
               </div>
@@ -62,9 +64,9 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="relative flex justify-center md:justify-end">
-              <div className="relative w-full max-w-[560px]">
-                <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl" />
+            <div className="relative flex justify-center md:justify-end animate-fade-in-right">
+              <div className="relative w-full max-w-[560px] animate-float">
+                <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
                 <img
                   src={heroProduct}
                   alt="On the Lip balm — round container and lipstick tube"
@@ -95,7 +97,7 @@ const Index = () => {
 
         {/* Features */}
         <section id="product" className="container mx-auto px-6 py-24">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="reveal mx-auto max-w-2xl text-center">
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Why On the Lip</p>
             <h2 className="font-serif text-4xl md:text-5xl">A balm that does more than balm.</h2>
             <p className="mt-5 text-foreground/70">
@@ -121,13 +123,13 @@ const Index = () => {
                 title: "Subtle Sheen",
                 copy: "A naturally luminous finish — never sticky, never greasy, always wearable.",
               },
-            ].map(({ icon: Icon, title, copy }) => (
+            ].map(({ icon: Icon, title, copy }, i) => (
               <article
                 key={title}
-                className="group rounded-3xl border border-border bg-card p-8 transition-all hover:-translate-y-1"
-                style={{ boxShadow: "var(--shadow-soft)" }}
+                className="reveal hover-lift group rounded-3xl border border-border bg-card p-8"
+                style={{ boxShadow: "var(--shadow-soft)", transitionDelay: `${i * 120}ms` }}
               >
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mb-3 font-serif text-2xl italic text-primary">{title}</h3>
@@ -140,21 +142,22 @@ const Index = () => {
         {/* Ingredients */}
         <section id="ingredients" className="bg-secondary/40">
           <div className="container mx-auto grid items-center gap-16 px-6 py-24 md:grid-cols-2">
-            <div className="relative">
+            <div className="reveal relative group">
+              <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
               <img
                 src={ingredients}
-                alt="Natural lip balm ingredients flat lay"
+                alt="On the Lip balm tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose, strawberry and vanilla"
                 width={1024}
                 height={1024}
                 loading="lazy"
-                className="aspect-square w-full rounded-3xl object-cover"
+                className="relative aspect-square w-full rounded-3xl object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               />
-              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-border bg-background px-6 py-4 font-serif italic md:block">
+              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-border bg-background px-6 py-4 font-serif italic md:block animate-float">
                 <span className="text-primary">100%</span> botanical
               </div>
             </div>
-            <div className="space-y-6">
+            <div className="reveal space-y-6">
               <p className="text-xs uppercase tracking-[0.3em] text-primary">The Formula</p>
               <h2 className="font-serif text-4xl md:text-5xl">
                 Five ingredients.<br/>
@@ -194,7 +197,7 @@ const Index = () => {
 
         {/* Story */}
         <section id="story" className="container mx-auto px-6 py-24">
-          <div className="text-center">
+          <div className="reveal text-center">
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Our Story</p>
             <h2 className="mx-auto max-w-3xl font-serif text-4xl md:text-5xl">
               Born from a chapped winter and a stubborn belief that
@@ -209,7 +212,7 @@ const Index = () => {
 
           {/* Business Model Canvas */}
           <div className="mt-20">
-            <div className="mx-auto max-w-2xl text-center">
+            <div className="reveal mx-auto max-w-2xl text-center">
               <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">The Blueprint</p>
               <h3 className="font-serif text-3xl md:text-4xl">Business Model Canvas</h3>
               <p className="mt-4 text-foreground/70">
@@ -228,11 +231,11 @@ const Index = () => {
                 { title: "Channels", body: "Instagram (@_on_the_lip) · Direct messages · Campus pop-ups · Friend referrals", span: "md:col-span-1 md:row-span-1" },
                 { title: "Cost Structure", body: "Raw botanicals · Packaging · Small-batch production · Marketing on social media", span: "md:col-span-2 md:row-span-1" },
                 { title: "Revenue Streams", body: "Direct product sales at 60 EGP per unit · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
-              ].map(({ title, body, span }) => (
+              ].map(({ title, body, span }, i) => (
                 <div
                   key={title}
-                  className={`rounded-2xl border border-border bg-card p-5 ${span}`}
-                  style={{ boxShadow: "var(--shadow-soft)" }}
+                  className={`reveal hover-lift rounded-2xl border border-border bg-card p-5 ${span}`}
+                  style={{ boxShadow: "var(--shadow-soft)", transitionDelay: `${i * 70}ms` }}
                 >
                   <h4 className="mb-2 font-serif text-sm uppercase tracking-[0.15em] text-primary">{title}</h4>
                   <p className="text-sm text-foreground/75">{body}</p>
