@@ -157,7 +157,7 @@ const Index = () => {
                 <span className="text-primary">100%</span> botanical
               </div>
             </div>
-            <div className="space-y-6">
+            <div className="reveal space-y-6">
               <p className="text-xs uppercase tracking-[0.3em] text-primary">The Formula</p>
               <h2 className="font-serif text-4xl md:text-5xl">
                 Five ingredients.<br/>
