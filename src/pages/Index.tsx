@@ -197,7 +197,7 @@ const Index = () => {
 
         {/* Story */}
         <section id="story" className="container mx-auto px-6 py-24">
-          <div className="text-center">
+          <div className="reveal text-center">
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Our Story</p>
             <h2 className="mx-auto max-w-3xl font-serif text-4xl md:text-5xl">
               Born from a chapped winter and a stubborn belief that
@@ -212,7 +212,7 @@ const Index = () => {
 
           {/* Business Model Canvas */}
           <div className="mt-20">
-            <div className="mx-auto max-w-2xl text-center">
+            <div className="reveal mx-auto max-w-2xl text-center">
               <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">The Blueprint</p>
               <h3 className="font-serif text-3xl md:text-4xl">Business Model Canvas</h3>
               <p className="mt-4 text-foreground/70">
@@ -231,11 +231,11 @@ const Index = () => {
                 { title: "Channels", body: "Instagram (@_on_the_lip) · Direct messages · Campus pop-ups · Friend referrals", span: "md:col-span-1 md:row-span-1" },
                 { title: "Cost Structure", body: "Raw botanicals · Packaging · Small-batch production · Marketing on social media", span: "md:col-span-2 md:row-span-1" },
                 { title: "Revenue Streams", body: "Direct product sales at 60 EGP per unit · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
-              ].map(({ title, body, span }) => (
+              ].map(({ title, body, span }, i) => (
                 <div
                   key={title}
-                  className={`rounded-2xl border border-border bg-card p-5 ${span}`}
-                  style={{ boxShadow: "var(--shadow-soft)" }}
+                  className={`reveal hover-lift rounded-2xl border border-border bg-card p-5 ${span}`}
+                  style={{ boxShadow: "var(--shadow-soft)", transitionDelay: `${i * 70}ms` }}
                 >
                   <h4 className="mb-2 font-serif text-sm uppercase tracking-[0.15em] text-primary">{title}</h4>
                   <p className="text-sm text-foreground/75">{body}</p>
