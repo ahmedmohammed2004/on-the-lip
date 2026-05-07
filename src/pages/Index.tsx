@@ -78,7 +78,6 @@ const Index = () => {
               </div>
             </div>
           </div>
-          </div>
         </section>
 
         {/* Marquee strip */}
