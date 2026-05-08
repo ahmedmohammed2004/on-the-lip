@@ -1,5 +1,6 @@
 import heroProduct from "@/assets/brand-product.jpg";
 import ingredients from "@/assets/formula-ingredients.jpg";
+import lipTint from "@/assets/lip-tint.jpg";
 import instagramQr from "@/assets/instagram-qr.jpg";
 import { Button } from "@/components/ui/button";
 import { Leaf, Droplets, Sparkles, ShieldCheck } from "lucide-react";
