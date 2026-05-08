@@ -3,7 +3,7 @@ import ingredients from "@/assets/formula-ingredients.jpg";
 import lipTint from "@/assets/lip-tint.jpg";
 import instagramQr from "@/assets/instagram-qr.jpg";
 import { Button } from "@/components/ui/button";
-import { Leaf, Droplets, Sparkles, ShieldCheck } from "lucide-react";
+import { Leaf, Droplets, Sparkles, ShieldCheck, Instagram, MapPin } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
@@ -346,14 +346,28 @@ const Index = () => {
           </div>
           <div>
             <h3 className="mb-3 text-sm font-semibold">Connect</h3>
-            <ul className="space-y-2 text-sm text-foreground/70">
-              <li>
-                <a href="https://instagram.com/_on_the_lip" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                  Instagram · @_on_the_lip
-                </a>
-              </li>
-              <li>Cairo, Egypt</li>
-            </ul>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://instagram.com/_on_the_lip"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow @_on_the_lip on Instagram"
+                title="@_on_the_lip"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.google.com/maps/search/German+University+in+Cairo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Based in Cairo, Egypt"
+                title="Cairo, Egypt"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                <MapPin className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
         <div className="border-t border-border py-6 text-center text-xs text-foreground/50">
