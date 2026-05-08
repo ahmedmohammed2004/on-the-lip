@@ -23,8 +23,8 @@ const Index = () => {
             <li><a href="#story" className="text-foreground/70 transition-colors hover:text-foreground">Our Story</a></li>
             <li><a href="#contact" className="text-foreground/70 transition-colors hover:text-foreground">Contact</a></li>
           </ul>
-          <Button variant="default" className="rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90">
-            Shop now
+          <Button asChild variant="default" className="rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90">
+            <a href="/shop" target="_blank" rel="noopener noreferrer">Shop now</a>
           </Button>
         </nav>
       </header>
@@ -50,8 +50,8 @@ const Index = () => {
                 and restore — wear it bare, or under your favorite color.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Button size="lg" className="rounded-full bg-primary px-8 text-primary-foreground transition-transform hover:scale-[1.03] hover:bg-primary/90">
-                  Shop the collection
+                <Button asChild size="lg" className="rounded-full bg-primary px-8 text-primary-foreground transition-transform hover:scale-[1.03] hover:bg-primary/90">
+                  <a href="/shop" target="_blank" rel="noopener noreferrer">Shop the collection</a>
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full border-border bg-transparent px-8 transition-colors hover:bg-foreground/5">
                   Discover the ritual
@@ -226,8 +226,8 @@ const Index = () => {
               </ul>
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <span className="font-serif text-2xl text-primary">50 EGP</span>
-                <Button className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90">
-                  Shop the tint
+                <Button asChild className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90">
+                  <a href="/shop" target="_blank" rel="noopener noreferrer">Shop the tint</a>
                 </Button>
               </div>
             </div>
@@ -307,8 +307,8 @@ const Index = () => {
                 Try On the Lip risk-free. If you don&apos;t love it within 30 days, we&apos;ll refund
                 every cent.
               </p>
-              <Button size="lg" className="mt-2 rounded-full bg-primary px-10 text-primary-foreground hover:bg-primary/90">
-                Shop now — 60 EGP
+              <Button asChild size="lg" className="mt-2 rounded-full bg-primary px-10 text-primary-foreground hover:bg-primary/90">
+                <a href="/shop" target="_blank" rel="noopener noreferrer">Shop now — 60 EGP</a>
               </Button>
             </div>
             <div className="flex flex-col items-center gap-4">
