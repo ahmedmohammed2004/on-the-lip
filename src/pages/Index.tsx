@@ -283,7 +283,7 @@ const Index = () => {
                 { title: "Key Resources", body: "Founders' formulation expertise · Trusted ingredient supply · Brand identity · Instagram presence", span: "md:col-span-1 md:row-span-1" },
                 { title: "Channels", body: "Instagram (@_on_the_lip) · Direct messages · Campus pop-ups · Friend referrals", span: "md:col-span-1 md:row-span-1" },
                 { title: "Cost Structure", body: "Raw botanicals · Packaging · Small-batch production · Marketing on social media", span: "md:col-span-2 md:row-span-1" },
-                { title: "Revenue Streams", body: "Direct product sales at 60 EGP per unit · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
+                { title: "Revenue Streams", body: "Lip ointment at 60 EGP · Lip tint at 50 EGP · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
               ].map(({ title, body, span }, i) => (
                 <div
                   key={title}
