@@ -330,35 +330,29 @@ const Index = () => {
       </main>
 
       <footer className="border-t border-border bg-background">
-        <div className="container mx-auto grid gap-8 px-6 py-12 md:grid-cols-4">
+        <div className="container mx-auto grid gap-8 px-6 py-12 md:grid-cols-3">
           <div>
             <div className="font-serif text-xl">On the Lip</div>
             <p className="mt-3 max-w-xs text-sm text-foreground/60">
-              Botanical lip care, crafted in small batches.
+              Botanical lip care, hand-poured in Cairo by GUC students.
             </p>
           </div>
           <div>
             <h3 className="mb-3 text-sm font-semibold">Shop</h3>
             <ul className="space-y-2 text-sm text-foreground/70">
-              <li>The Original</li>
-              <li>Tinted</li>
-              <li>Gift Sets</li>
+              <li><a href="#ingredients" className="hover:text-foreground">Lip Ointment — 60 EGP</a></li>
+              <li><a href="#lip-tint" className="hover:text-foreground">Lip Tint — 50 EGP</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 text-sm font-semibold">Company</h3>
+            <h3 className="mb-3 text-sm font-semibold">Connect</h3>
             <ul className="space-y-2 text-sm text-foreground/70">
-              <li>About</li>
-              <li>Journal</li>
-              <li>Stockists</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-3 text-sm font-semibold">Support</h3>
-            <ul className="space-y-2 text-sm text-foreground/70">
-              <li>Contact</li>
-              <li>Shipping</li>
-              <li>Returns</li>
+              <li>
+                <a href="https://instagram.com/_on_the_lip" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+                  Instagram · @_on_the_lip
+                </a>
+              </li>
+              <li>Cairo, Egypt</li>
             </ul>
           </div>
         </div>
