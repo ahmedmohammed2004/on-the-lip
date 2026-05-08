@@ -17,7 +17,8 @@ const Index = () => {
           </a>
           <ul className="hidden items-center gap-8 text-sm md:flex">
             <li><a href="#product" className="text-foreground/70 transition-colors hover:text-foreground">Product</a></li>
-            <li><a href="#ingredients" className="text-foreground/70 transition-colors hover:text-foreground">Ingredients</a></li>
+            <li><a href="#ingredients" className="text-foreground/70 transition-colors hover:text-foreground">Ointment</a></li>
+            <li><a href="#lip-tint" className="text-foreground/70 transition-colors hover:text-foreground">Lip Tint</a></li>
             <li><a href="#story" className="text-foreground/70 transition-colors hover:text-foreground">Our Story</a></li>
             <li><a href="#contact" className="text-foreground/70 transition-colors hover:text-foreground">Contact</a></li>
           </ul>
@@ -195,6 +196,58 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Lip Tint */}
+        <section id="lip-tint" className="container mx-auto px-6 py-24">
+          <div className="grid items-center gap-16 md:grid-cols-2">
+            <div className="reveal space-y-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-primary">Also from On the Lip</p>
+              <h2 className="font-serif text-4xl md:text-5xl">
+                Lip Tint<span className="text-primary">.</span><br/>
+                <em className="font-normal italic text-foreground/80">A wash of color, a drink of water.</em>
+              </h2>
+              <p className="text-foreground/70">
+                A featherlight, water-based tint that hydrates while it colors. Just five clean
+                ingredients — nothing heavy, nothing sticky.
+              </p>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
+                {[
+                  "Water",
+                  "Glycerin",
+                  "Aloe Vera Gel",
+                  "Preservative",
+                  "Food-Grade Dye",
+                ].map((ing) => (
+                  <li key={ing} className="flex items-center gap-3 border-b border-border pb-2 text-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {ing}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <span className="font-serif text-2xl text-primary">50 EGP</span>
+                <Button className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90">
+                  Shop the tint
+                </Button>
+              </div>
+            </div>
+            <div className="reveal relative order-first md:order-last">
+              <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
+              <div
+                className="relative aspect-square w-full overflow-hidden rounded-3xl border border-border"
+                style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-soft)" }}
+              >
+                <div className="flex h-full items-center justify-center p-10 text-center">
+                  <div className="space-y-3">
+                    <div className="mx-auto h-32 w-32 rounded-full bg-primary/80 animate-float" style={{ boxShadow: "var(--shadow-warm)" }} />
+                    <p className="font-serif text-2xl italic text-foreground/80">Hydrating Lip Tint</p>
+                    <p className="text-sm text-foreground/60">Water-based · Buildable · Vegan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Story */}
         <section id="story" className="container mx-auto px-6 py-24">
           <div className="reveal text-center">
@@ -224,13 +277,13 @@ const Index = () => {
               {[
                 { title: "Key Partners", body: "Local botanical suppliers · Egyptian beekeepers · GUC labs · Small-batch packaging artisans", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Activities", body: "Hand-pouring batches · Sourcing botanicals · Quality testing · Community building on Instagram", span: "md:col-span-1 md:row-span-1" },
-                { title: "Value Propositions", body: "Five-ingredient lip ointment in three signature scents — Rose, Strawberry, Vanilla. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
+                { title: "Value Propositions", body: "Five-ingredient lip ointment in three signature scents (Rose, Strawberry, Vanilla) plus a hydrating water-based lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
                 { title: "Customer Relationships", body: "Personal · DM-based support · Loyal community on @_on_the_lip · Word of mouth", span: "md:col-span-1 md:row-span-1" },
                 { title: "Customer Segments", body: "GUC students · Young adults in Cairo · Clean-beauty enthusiasts · Gift buyers", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Resources", body: "Founders' formulation expertise · Trusted ingredient supply · Brand identity · Instagram presence", span: "md:col-span-1 md:row-span-1" },
                 { title: "Channels", body: "Instagram (@_on_the_lip) · Direct messages · Campus pop-ups · Friend referrals", span: "md:col-span-1 md:row-span-1" },
                 { title: "Cost Structure", body: "Raw botanicals · Packaging · Small-batch production · Marketing on social media", span: "md:col-span-2 md:row-span-1" },
-                { title: "Revenue Streams", body: "Direct product sales at 60 EGP per unit · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
+                { title: "Revenue Streams", body: "Lip ointment at 60 EGP · Lip tint at 50 EGP · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
               ].map(({ title, body, span }, i) => (
                 <div
                   key={title}
