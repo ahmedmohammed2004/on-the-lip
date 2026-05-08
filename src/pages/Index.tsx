@@ -17,7 +17,8 @@ const Index = () => {
           </a>
           <ul className="hidden items-center gap-8 text-sm md:flex">
             <li><a href="#product" className="text-foreground/70 transition-colors hover:text-foreground">Product</a></li>
-            <li><a href="#ingredients" className="text-foreground/70 transition-colors hover:text-foreground">Ingredients</a></li>
+            <li><a href="#ingredients" className="text-foreground/70 transition-colors hover:text-foreground">Ointment</a></li>
+            <li><a href="#lip-tint" className="text-foreground/70 transition-colors hover:text-foreground">Lip Tint</a></li>
             <li><a href="#story" className="text-foreground/70 transition-colors hover:text-foreground">Our Story</a></li>
             <li><a href="#contact" className="text-foreground/70 transition-colors hover:text-foreground">Contact</a></li>
           </ul>
