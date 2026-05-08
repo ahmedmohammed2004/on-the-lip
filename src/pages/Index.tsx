@@ -195,6 +195,58 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Lip Tint */}
+        <section id="lip-tint" className="container mx-auto px-6 py-24">
+          <div className="grid items-center gap-16 md:grid-cols-2">
+            <div className="reveal space-y-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-primary">Also from On the Lip</p>
+              <h2 className="font-serif text-4xl md:text-5xl">
+                Lip Tint<span className="text-primary">.</span><br/>
+                <em className="font-normal italic text-foreground/80">A wash of color, a drink of water.</em>
+              </h2>
+              <p className="text-foreground/70">
+                A featherlight, water-based tint that hydrates while it colors. Just five clean
+                ingredients — nothing heavy, nothing sticky.
+              </p>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
+                {[
+                  "Water",
+                  "Glycerin",
+                  "Aloe Vera Gel",
+                  "Preservative",
+                  "Food-Grade Dye",
+                ].map((ing) => (
+                  <li key={ing} className="flex items-center gap-3 border-b border-border pb-2 text-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {ing}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <span className="font-serif text-2xl text-primary">50 EGP</span>
+                <Button className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90">
+                  Shop the tint
+                </Button>
+              </div>
+            </div>
+            <div className="reveal relative order-first md:order-last">
+              <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
+              <div
+                className="relative aspect-square w-full overflow-hidden rounded-3xl border border-border"
+                style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-soft)" }}
+              >
+                <div className="flex h-full items-center justify-center p-10 text-center">
+                  <div className="space-y-3">
+                    <div className="mx-auto h-32 w-32 rounded-full bg-primary/80 animate-float" style={{ boxShadow: "var(--shadow-warm)" }} />
+                    <p className="font-serif text-2xl italic text-foreground/80">Hydrating Lip Tint</p>
+                    <p className="text-sm text-foreground/60">Water-based · Buildable · Vegan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Story */}
         <section id="story" className="container mx-auto px-6 py-24">
           <div className="reveal text-center">
