@@ -233,18 +233,15 @@ const Index = () => {
             </div>
             <div className="reveal relative order-first md:order-last">
               <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
-              <div
-                className="relative aspect-square w-full overflow-hidden rounded-3xl border border-border"
-                style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-soft)" }}
-              >
-                <div className="flex h-full items-center justify-center p-10 text-center">
-                  <div className="space-y-3">
-                    <div className="mx-auto h-32 w-32 rounded-full bg-primary/80 animate-float" style={{ boxShadow: "var(--shadow-warm)" }} />
-                    <p className="font-serif text-2xl italic text-foreground/80">Hydrating Lip Tint</p>
-                    <p className="text-sm text-foreground/60">Water-based · Buildable · Vegan</p>
-                  </div>
-                </div>
-              </div>
+              <img
+                src={lipTint}
+                alt="On the Lip — water-based hydrating lip tint bottle on a soft pink background"
+                width={1280}
+                height={700}
+                loading="lazy"
+                className="relative aspect-square w-full rounded-3xl object-cover transition-transform duration-700 hover:scale-[1.02]"
+                style={{ boxShadow: "var(--shadow-soft)" }}
+              />
             </div>
           </div>
         </section>
