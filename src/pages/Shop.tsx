@@ -63,7 +63,7 @@ const products: Product[] = [
     image: heroProduct,
     alt: "On the Lip — botanical lip ointment",
     description: "A five-ingredient botanical balm for deep hydration and a lasting barrier.",
-    flavors: ["Rose", "Strawberry", "Vanilla"],
+    flavors: ["Rose", "Strawberry"],
   },
   {
     id: "tint",
