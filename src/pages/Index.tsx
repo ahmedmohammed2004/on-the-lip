@@ -93,7 +93,7 @@ const Index = () => {
             <span className="opacity-40">✦</span>
             <span>White Wax</span>
             <span className="opacity-40">✦</span>
-            <span>Rose · Strawberry · Vanilla</span>
+            <span>Rose · Strawberry</span>
           </div>
         </section>
 
