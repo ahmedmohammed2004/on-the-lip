@@ -2,7 +2,7 @@ import { useState } from "react";
 import heroProduct from "@/assets/brand-product.jpg";
 import lipTint from "@/assets/lip-tint.jpg";
 import { Button } from "@/components/ui/button";
-import { Leaf, ShoppingBag, Trash2 } from "lucide-react";
+import { Leaf, ShoppingBag, Trash2, Banknote, CreditCard, CheckCircle2 } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -12,7 +12,38 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+type PaymentMethod = "cash" | "visa";
+type CheckoutStep = "select" | "visa" | "confirmed";
+
+const visaSchema = z.object({
+  number: z
+    .string()
+    .trim()
+    .regex(/^\d{13,19}$/, { message: "Card number must be 13–19 digits" }),
+  name: z
+    .string()
+    .trim()
+    .nonempty({ message: "Name on card is required" })
+    .max(100, { message: "Name must be less than 100 characters" }),
+  expiry: z
+    .string()
+    .trim()
+    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, { message: "Expiry must be MM/YY" }),
+  cvv: z.string().trim().regex(/^\d{3,4}$/, { message: "CVV must be 3–4 digits" }),
+});
 
 type Product = {
   id: "ointment" | "tint";
@@ -61,6 +92,50 @@ const Shop = () => {
   });
   const [cart, setCart] = useState<CartItem[]>([]);
   const [bagOpen, setBagOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [step, setStep] = useState<CheckoutStep>("select");
+  const [method, setMethod] = useState<PaymentMethod | null>(null);
+  const [visa, setVisa] = useState({ number: "", name: "", expiry: "", cvv: "" });
+  const [visaErrors, setVisaErrors] = useState<Record<string, string>>({});
+  const [confirmedMethod, setConfirmedMethod] = useState<PaymentMethod | null>(null);
+  const [confirmedLast4, setConfirmedLast4] = useState<string>("");
+
+  const openCheckout = () => {
+    setStep("select");
+    setMethod(null);
+    setVisa({ number: "", name: "", expiry: "", cvv: "" });
+    setVisaErrors({});
+    setCheckoutOpen(true);
+    setBagOpen(false);
+  };
+
+  const confirmCash = () => {
+    setConfirmedMethod("cash");
+    setStep("confirmed");
+  };
+
+  const confirmVisa = () => {
+    const result = visaSchema.safeParse(visa);
+    if (!result.success) {
+      const errs: Record<string, string> = {};
+      result.error.issues.forEach((i) => {
+        const k = i.path[0] as string;
+        if (!errs[k]) errs[k] = i.message;
+      });
+      setVisaErrors(errs);
+      return;
+    }
+    setVisaErrors({});
+    setConfirmedMethod("visa");
+    setConfirmedLast4(result.data.number.slice(-4));
+    setStep("confirmed");
+  };
+
+  const finishOrder = () => {
+    setCheckoutOpen(false);
+    setCart([]);
+    toast({ title: "Order placed", description: "Thanks for shopping with On the Lip." });
+  };
 
   const addToBag = (p: Product) => {
     const flavor = selected[p.id];
@@ -156,7 +231,10 @@ const Shop = () => {
                       </span>
                       <span className="font-serif text-2xl text-primary">{totalPrice} EGP</span>
                     </div>
-                    <Button className="mt-4 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    <Button
+                      onClick={openCheckout}
+                      className="mt-4 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
                       Checkout
                     </Button>
                   </SheetFooter>
@@ -234,6 +312,193 @@ const Shop = () => {
           </a>
         </div>
       </main>
+
+      <Dialog open={checkoutOpen} onOpenChange={setCheckoutOpen}>
+        <DialogContent className="sm:max-w-md">
+          {step === "select" && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="font-serif text-2xl">Choose payment method</DialogTitle>
+                <DialogDescription>
+                  Total due: <span className="text-primary">{totalPrice} EGP</span>
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-3 py-2">
+                <button
+                  onClick={() => setMethod("cash")}
+                  className={
+                    "flex items-center gap-3 rounded-2xl border p-4 text-left transition-colors " +
+                    (method === "cash"
+                      ? "border-primary bg-primary/5"
+                      : "border-border hover:border-foreground/30")
+                  }
+                  aria-pressed={method === "cash"}
+                >
+                  <Banknote className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="font-medium">Cash on delivery</p>
+                    <p className="text-xs text-foreground/60">Pay when your order arrives.</p>
+                  </div>
+                </button>
+                <button
+                  onClick={() => setMethod("visa")}
+                  className={
+                    "flex items-center gap-3 rounded-2xl border p-4 text-left transition-colors " +
+                    (method === "visa"
+                      ? "border-primary bg-primary/5"
+                      : "border-border hover:border-foreground/30")
+                  }
+                  aria-pressed={method === "visa"}
+                >
+                  <CreditCard className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="font-medium">Visa</p>
+                    <p className="text-xs text-foreground/60">Pay securely with your card.</p>
+                  </div>
+                </button>
+              </div>
+              <DialogFooter>
+                <Button
+                  disabled={!method}
+                  onClick={() => {
+                    if (method === "cash") confirmCash();
+                    else if (method === "visa") setStep("visa");
+                  }}
+                  className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Continue
+                </Button>
+              </DialogFooter>
+            </>
+          )}
+
+          {step === "visa" && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="font-serif text-2xl">Visa details</DialogTitle>
+                <DialogDescription>
+                  Enter your card information. We don't store your card.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-3 py-2">
+                <div>
+                  <Label htmlFor="card-number">Card number</Label>
+                  <Input
+                    id="card-number"
+                    inputMode="numeric"
+                    autoComplete="cc-number"
+                    maxLength={19}
+                    placeholder="4242 4242 4242 4242"
+                    value={visa.number}
+                    onChange={(e) =>
+                      setVisa((v) => ({ ...v, number: e.target.value.replace(/\s/g, "") }))
+                    }
+                  />
+                  {visaErrors.number && (
+                    <p className="mt-1 text-xs text-destructive">{visaErrors.number}</p>
+                  )}
+                </div>
+                <div>
+                  <Label htmlFor="card-name">Name on card</Label>
+                  <Input
+                    id="card-name"
+                    autoComplete="cc-name"
+                    maxLength={100}
+                    placeholder="Full name"
+                    value={visa.name}
+                    onChange={(e) => setVisa((v) => ({ ...v, name: e.target.value }))}
+                  />
+                  {visaErrors.name && (
+                    <p className="mt-1 text-xs text-destructive">{visaErrors.name}</p>
+                  )}
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <Label htmlFor="card-expiry">Expiry (MM/YY)</Label>
+                    <Input
+                      id="card-expiry"
+                      autoComplete="cc-exp"
+                      maxLength={5}
+                      placeholder="08/28"
+                      value={visa.expiry}
+                      onChange={(e) => setVisa((v) => ({ ...v, expiry: e.target.value }))}
+                    />
+                    {visaErrors.expiry && (
+                      <p className="mt-1 text-xs text-destructive">{visaErrors.expiry}</p>
+                    )}
+                  </div>
+                  <div>
+                    <Label htmlFor="card-cvv">CVV</Label>
+                    <Input
+                      id="card-cvv"
+                      inputMode="numeric"
+                      autoComplete="cc-csc"
+                      maxLength={4}
+                      placeholder="123"
+                      value={visa.cvv}
+                      onChange={(e) =>
+                        setVisa((v) => ({ ...v, cvv: e.target.value.replace(/\D/g, "") }))
+                      }
+                    />
+                    {visaErrors.cvv && (
+                      <p className="mt-1 text-xs text-destructive">{visaErrors.cvv}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <DialogFooter className="gap-2 sm:gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => setStep("select")}
+                  className="rounded-full"
+                >
+                  Back
+                </Button>
+                <Button
+                  onClick={confirmVisa}
+                  className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Confirm payment
+                </Button>
+              </DialogFooter>
+            </>
+          )}
+
+          {step === "confirmed" && (
+            <>
+              <DialogHeader>
+                <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                  <CheckCircle2 className="h-8 w-8 text-primary" />
+                </div>
+                <DialogTitle className="text-center font-serif text-2xl">
+                  Payment confirmed
+                </DialogTitle>
+                <DialogDescription className="text-center">
+                  {confirmedMethod === "cash"
+                    ? "Your order is confirmed — you'll pay with cash on delivery."
+                    : `Your Visa payment ending in •••• ${confirmedLast4} is confirmed.`}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="rounded-2xl border border-border bg-card p-4 text-sm">
+                <div className="flex items-center justify-between">
+                  <span className="uppercase tracking-[0.2em] text-foreground/60 text-xs">
+                    Total paid
+                  </span>
+                  <span className="font-serif text-lg text-primary">{totalPrice} EGP</span>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button
+                  onClick={finishOrder}
+                  className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Done
+                </Button>
+              </DialogFooter>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
