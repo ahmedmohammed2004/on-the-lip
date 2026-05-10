@@ -163,11 +163,11 @@ const Index = () => {
               <p className="text-xs uppercase tracking-[0.3em] text-primary">The Formula</p>
               <h2 className="font-serif text-4xl md:text-5xl">
                 Five ingredients.<br/>
-                <em>Three scents.</em>
+                <em>Two scents.</em>
               </h2>
               <p className="text-foreground/70">
                 A radically simple base of skin-loving emollients, finished with a single
-                volatile oil. Choose your favorite scent — Rose, Strawberry, or Vanilla.
+                volatile oil. Choose your favorite scent — Rose or Strawberry.
               </p>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
                 {[
@@ -175,7 +175,7 @@ const Index = () => {
                   "Lanolin",
                   "White Petrolatum",
                   "White Wax",
-                  "Volatile Oil (Rose / Strawberry / Vanilla)",
+                  "Volatile Oil (Rose / Strawberry)",
                 ].map((ing) => (
                   <li key={ing} className="flex items-center gap-3 border-b border-border pb-2 text-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -184,7 +184,7 @@ const Index = () => {
                 ))}
               </ul>
               <div className="flex flex-wrap gap-2 pt-2">
-                {["Rose", "Strawberry", "Vanilla"].map((scent) => (
+                {["Rose", "Strawberry"].map((scent) => (
                   <span
                     key={scent}
                     className="rounded-full border border-border bg-background px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70"
