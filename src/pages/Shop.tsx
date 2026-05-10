@@ -2,7 +2,7 @@ import { useState } from "react";
 import heroProduct from "@/assets/brand-product.jpg";
 import lipTint from "@/assets/lip-tint.jpg";
 import { Button } from "@/components/ui/button";
-import { Leaf, ShoppingBag, Trash2 } from "lucide-react";
+import { Leaf, ShoppingBag, Trash2, Banknote, CreditCard, CheckCircle2 } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -12,7 +12,38 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+type PaymentMethod = "cash" | "visa";
+type CheckoutStep = "select" | "visa" | "confirmed";
+
+const visaSchema = z.object({
+  number: z
+    .string()
+    .trim()
+    .regex(/^\d{13,19}$/, { message: "Card number must be 13–19 digits" }),
+  name: z
+    .string()
+    .trim()
+    .nonempty({ message: "Name on card is required" })
+    .max(100, { message: "Name must be less than 100 characters" }),
+  expiry: z
+    .string()
+    .trim()
+    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, { message: "Expiry must be MM/YY" }),
+  cvv: z.string().trim().regex(/^\d{3,4}$/, { message: "CVV must be 3–4 digits" }),
+});
 
 type Product = {
   id: "ointment" | "tint";
