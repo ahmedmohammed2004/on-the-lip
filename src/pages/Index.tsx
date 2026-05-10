@@ -275,7 +275,7 @@ const Index = () => {
               {[
                 { title: "Key Partners", body: "Local botanical suppliers · Egyptian beekeepers · GUC labs · Small-batch packaging artisans", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Activities", body: "Hand-pouring batches · Sourcing botanicals · Quality testing · Community building on Instagram", span: "md:col-span-1 md:row-span-1" },
-                { title: "Value Propositions", body: "Five-ingredient lip ointment in three signature scents (Rose, Strawberry, Vanilla) plus a hydrating water-based lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
+                { title: "Value Propositions", body: "Five-ingredient lip ointment in two signature scents (Rose, Strawberry) plus a hydrating water-based lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
                 { title: "Customer Relationships", body: "Personal · DM-based support · Loyal community on @_on_the_lip · Word of mouth", span: "md:col-span-1 md:row-span-1" },
                 { title: "Customer Segments", body: "GUC students · Young adults in Cairo · Clean-beauty enthusiasts · Gift buyers", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Resources", body: "Founders' formulation expertise · Trusted ingredient supply · Brand identity · Instagram presence", span: "md:col-span-1 md:row-span-1" },
