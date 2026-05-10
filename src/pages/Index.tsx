@@ -93,7 +93,7 @@ const Index = () => {
             <span className="opacity-40">✦</span>
             <span>White Wax</span>
             <span className="opacity-40">✦</span>
-            <span>Rose · Strawberry · Vanilla</span>
+            <span>Rose · Strawberry</span>
           </div>
         </section>
 
@@ -148,7 +148,7 @@ const Index = () => {
               <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
               <img
                 src={ingredients}
-                alt="On the Lip balm tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose, strawberry and vanilla"
+                alt="On the Lip balm tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose and strawberry"
                 width={1024}
                 height={1024}
                 loading="lazy"
@@ -163,11 +163,11 @@ const Index = () => {
               <p className="text-xs uppercase tracking-[0.3em] text-primary">The Formula</p>
               <h2 className="font-serif text-4xl md:text-5xl">
                 Five ingredients.<br/>
-                <em>Three scents.</em>
+                <em>Two scents.</em>
               </h2>
               <p className="text-foreground/70">
                 A radically simple base of skin-loving emollients, finished with a single
-                volatile oil. Choose your favorite scent — Rose, Strawberry, or Vanilla.
+                volatile oil. Choose your favorite scent — Rose or Strawberry.
               </p>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
                 {[
@@ -175,7 +175,7 @@ const Index = () => {
                   "Lanolin",
                   "White Petrolatum",
                   "White Wax",
-                  "Volatile Oil (Rose / Strawberry / Vanilla)",
+                  "Volatile Oil (Rose / Strawberry)",
                 ].map((ing) => (
                   <li key={ing} className="flex items-center gap-3 border-b border-border pb-2 text-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -184,7 +184,7 @@ const Index = () => {
                 ))}
               </ul>
               <div className="flex flex-wrap gap-2 pt-2">
-                {["Rose", "Strawberry", "Vanilla"].map((scent) => (
+                {["Rose", "Strawberry"].map((scent) => (
                   <span
                     key={scent}
                     className="rounded-full border border-border bg-background px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70"
@@ -275,7 +275,7 @@ const Index = () => {
               {[
                 { title: "Key Partners", body: "Local botanical suppliers · Egyptian beekeepers · GUC labs · Small-batch packaging artisans", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Activities", body: "Hand-pouring batches · Sourcing botanicals · Quality testing · Community building on Instagram", span: "md:col-span-1 md:row-span-1" },
-                { title: "Value Propositions", body: "Five-ingredient lip ointment in three signature scents (Rose, Strawberry, Vanilla) plus a hydrating water-based lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
+                { title: "Value Propositions", body: "Five-ingredient lip ointment in two signature scents (Rose, Strawberry) plus a hydrating water-based lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
                 { title: "Customer Relationships", body: "Personal · DM-based support · Loyal community on @_on_the_lip · Word of mouth", span: "md:col-span-1 md:row-span-1" },
                 { title: "Customer Segments", body: "GUC students · Young adults in Cairo · Clean-beauty enthusiasts · Gift buyers", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Resources", body: "Founders' formulation expertise · Trusted ingredient supply · Brand identity · Instagram presence", span: "md:col-span-1 md:row-span-1" },
