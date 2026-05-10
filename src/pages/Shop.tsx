@@ -1,12 +1,89 @@
+import { useState } from "react";
 import heroProduct from "@/assets/brand-product.jpg";
 import lipTint from "@/assets/lip-tint.jpg";
 import { Button } from "@/components/ui/button";
-import { Leaf } from "lucide-react";
+import { Leaf, ShoppingBag, Trash2 } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { toast } from "@/hooks/use-toast";
 
-const ointmentScents = ["Rose", "Strawberry", "Vanilla"];
-const tintFlavors = ["Rose", "Strawberry", "Vanilla"];
+type Product = {
+  id: "ointment" | "tint";
+  name: string;
+  price: number;
+  image: string;
+  alt: string;
+  description: string;
+  flavors: string[];
+};
+
+const products: Product[] = [
+  {
+    id: "ointment",
+    name: "Lip Ointment",
+    price: 60,
+    image: heroProduct,
+    alt: "On the Lip — botanical lip ointment",
+    description: "A five-ingredient botanical balm for deep hydration and a lasting barrier.",
+    flavors: ["Rose", "Strawberry", "Vanilla"],
+  },
+  {
+    id: "tint",
+    name: "Lip Tint",
+    price: 50,
+    image: lipTint,
+    alt: "On the Lip — water-based hydrating lip tint",
+    description: "A featherlight water-based tint that hydrates while it colors.",
+    flavors: ["Rose", "Strawberry", "Vanilla"],
+  },
+];
+
+type CartItem = {
+  key: string;
+  productId: Product["id"];
+  name: string;
+  flavor: string;
+  price: number;
+  qty: number;
+};
 
 const Shop = () => {
+  const [selected, setSelected] = useState<Record<string, string>>({
+    ointment: "Rose",
+    tint: "Rose",
+  });
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [bagOpen, setBagOpen] = useState(false);
+
+  const addToBag = (p: Product) => {
+    const flavor = selected[p.id];
+    const key = `${p.id}-${flavor}`;
+    setCart((prev) => {
+      const existing = prev.find((i) => i.key === key);
+      if (existing) {
+        return prev.map((i) => (i.key === key ? { ...i, qty: i.qty + 1 } : i));
+      }
+      return [...prev, { key, productId: p.id, name: p.name, flavor, price: p.price, qty: 1 }];
+    });
+    toast({
+      title: "Added to bag",
+      description: `${p.name} — ${flavor}`,
+    });
+  };
+
+  const removeItem = (key: string) =>
+    setCart((prev) => prev.filter((i) => i.key !== key));
+
+  const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+  const totalPrice = cart.reduce((s, i) => s + i.qty * i.price, 0);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-md">
@@ -14,9 +91,79 @@ const Shop = () => {
           <a href="/" className="font-serif text-2xl font-semibold tracking-tight">
             On the Lip
           </a>
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70">
-            <Leaf className="h-3.5 w-3.5 text-primary" /> Shop
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70">
+              <Leaf className="h-3.5 w-3.5 text-primary" /> Shop
+            </span>
+            <Sheet open={bagOpen} onOpenChange={setBagOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="relative rounded-full border-border"
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  <span className="ml-1">Bag</span>
+                  {totalQty > 0 && (
+                    <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[11px] font-semibold text-primary-foreground">
+                      {totalQty}
+                    </span>
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="flex flex-col">
+                <SheetHeader>
+                  <SheetTitle className="font-serif text-2xl">Your bag</SheetTitle>
+                  <SheetDescription>
+                    {totalQty === 0
+                      ? "Your bag is empty."
+                      : `${totalQty} item${totalQty > 1 ? "s" : ""} ready to go.`}
+                  </SheetDescription>
+                </SheetHeader>
+
+                <div className="mt-6 flex-1 space-y-3 overflow-y-auto">
+                  {cart.map((item) => (
+                    <div
+                      key={item.key}
+                      className="flex items-start justify-between gap-3 rounded-2xl border border-border bg-card p-4"
+                    >
+                      <div>
+                        <p className="font-serif text-lg leading-tight">{item.name}</p>
+                        <p className="mt-1 text-xs uppercase tracking-[0.2em] text-foreground/60">
+                          {item.flavor} · Qty {item.qty}
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="font-serif text-base text-primary">
+                          {item.qty * item.price} EGP
+                        </span>
+                        <button
+                          onClick={() => removeItem(item.key)}
+                          className="inline-flex items-center gap-1 text-xs text-foreground/60 hover:text-foreground"
+                          aria-label={`Remove ${item.name} ${item.flavor}`}
+                        >
+                          <Trash2 className="h-3.5 w-3.5" /> Remove
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {totalQty > 0 && (
+                  <SheetFooter className="mt-4 border-t border-border pt-4 sm:flex-col sm:space-x-0">
+                    <div className="flex w-full items-center justify-between">
+                      <span className="text-sm uppercase tracking-[0.2em] text-foreground/60">
+                        Total
+                      </span>
+                      <span className="font-serif text-2xl text-primary">{totalPrice} EGP</span>
+                    </div>
+                    <Button className="mt-4 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      Checkout
+                    </Button>
+                  </SheetFooter>
+                )}
+              </SheetContent>
+            </Sheet>
+          </div>
         </nav>
       </header>
 
@@ -30,83 +177,55 @@ const Shop = () => {
         </div>
 
         <div className="mt-16 grid gap-10 md:grid-cols-2">
-          {/* Lip Ointment */}
-          <article
-            className="rounded-3xl border border-border bg-card p-6"
-            style={{ boxShadow: "var(--shadow-soft)" }}
-          >
-            <div className="overflow-hidden rounded-2xl">
-              <img
-                src={heroProduct}
-                alt="On the Lip — botanical lip ointment"
-                className="aspect-[4/3] w-full object-cover"
-              />
-            </div>
-            <div className="mt-6 space-y-4">
-              <div className="flex items-baseline justify-between">
-                <h2 className="font-serif text-3xl">Lip Ointment</h2>
-                <span className="font-serif text-2xl text-primary">60 EGP</span>
+          {products.map((p) => (
+            <article
+              key={p.id}
+              className="rounded-3xl border border-border bg-card p-6"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
+              <div className="overflow-hidden rounded-2xl">
+                <img src={p.image} alt={p.alt} className="aspect-[4/3] w-full object-cover" />
               </div>
-              <p className="text-foreground/70">
-                A five-ingredient botanical balm for deep hydration and a lasting barrier.
-              </p>
-              <div>
-                <p className="mb-2 text-xs uppercase tracking-[0.2em] text-foreground/60">Flavors</p>
-                <div className="flex flex-wrap gap-2">
-                  {ointmentScents.map((s) => (
-                    <span
-                      key={s}
-                      className="rounded-full border border-border bg-background px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70"
-                    >
-                      {s}
-                    </span>
-                  ))}
+              <div className="mt-6 space-y-4">
+                <div className="flex items-baseline justify-between">
+                  <h2 className="font-serif text-3xl">{p.name}</h2>
+                  <span className="font-serif text-2xl text-primary">{p.price} EGP</span>
                 </div>
-              </div>
-              <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-                Add to bag — 60 EGP
-              </Button>
-            </div>
-          </article>
-
-          {/* Lip Tint */}
-          <article
-            className="rounded-3xl border border-border bg-card p-6"
-            style={{ boxShadow: "var(--shadow-soft)" }}
-          >
-            <div className="overflow-hidden rounded-2xl">
-              <img
-                src={lipTint}
-                alt="On the Lip — water-based hydrating lip tint"
-                className="aspect-[4/3] w-full object-cover"
-              />
-            </div>
-            <div className="mt-6 space-y-4">
-              <div className="flex items-baseline justify-between">
-                <h2 className="font-serif text-3xl">Lip Tint</h2>
-                <span className="font-serif text-2xl text-primary">50 EGP</span>
-              </div>
-              <p className="text-foreground/70">
-                A featherlight water-based tint that hydrates while it colors.
-              </p>
-              <div>
-                <p className="mb-2 text-xs uppercase tracking-[0.2em] text-foreground/60">Flavors</p>
-                <div className="flex flex-wrap gap-2">
-                  {tintFlavors.map((s) => (
-                    <span
-                      key={s}
-                      className="rounded-full border border-border bg-background px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/70"
-                    >
-                      {s}
-                    </span>
-                  ))}
+                <p className="text-foreground/70">{p.description}</p>
+                <div>
+                  <p className="mb-2 text-xs uppercase tracking-[0.2em] text-foreground/60">
+                    Flavor
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {p.flavors.map((f) => {
+                      const active = selected[p.id] === f;
+                      return (
+                        <button
+                          key={f}
+                          onClick={() => setSelected((s) => ({ ...s, [p.id]: f }))}
+                          className={
+                            "rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.2em] transition-colors " +
+                            (active
+                              ? "border-primary bg-primary text-primary-foreground"
+                              : "border-border bg-background text-foreground/70 hover:text-foreground")
+                          }
+                          aria-pressed={active}
+                        >
+                          {f}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
+                <Button
+                  onClick={() => addToBag(p)}
+                  className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Add to bag — {p.price} EGP
+                </Button>
               </div>
-              <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-                Add to bag — 50 EGP
-              </Button>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
 
         <div className="mt-16 text-center">
