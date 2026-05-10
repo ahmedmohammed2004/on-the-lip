@@ -92,6 +92,50 @@ const Shop = () => {
   });
   const [cart, setCart] = useState<CartItem[]>([]);
   const [bagOpen, setBagOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [step, setStep] = useState<CheckoutStep>("select");
+  const [method, setMethod] = useState<PaymentMethod | null>(null);
+  const [visa, setVisa] = useState({ number: "", name: "", expiry: "", cvv: "" });
+  const [visaErrors, setVisaErrors] = useState<Record<string, string>>({});
+  const [confirmedMethod, setConfirmedMethod] = useState<PaymentMethod | null>(null);
+  const [confirmedLast4, setConfirmedLast4] = useState<string>("");
+
+  const openCheckout = () => {
+    setStep("select");
+    setMethod(null);
+    setVisa({ number: "", name: "", expiry: "", cvv: "" });
+    setVisaErrors({});
+    setCheckoutOpen(true);
+    setBagOpen(false);
+  };
+
+  const confirmCash = () => {
+    setConfirmedMethod("cash");
+    setStep("confirmed");
+  };
+
+  const confirmVisa = () => {
+    const result = visaSchema.safeParse(visa);
+    if (!result.success) {
+      const errs: Record<string, string> = {};
+      result.error.issues.forEach((i) => {
+        const k = i.path[0] as string;
+        if (!errs[k]) errs[k] = i.message;
+      });
+      setVisaErrors(errs);
+      return;
+    }
+    setVisaErrors({});
+    setConfirmedMethod("visa");
+    setConfirmedLast4(result.data.number.slice(-4));
+    setStep("confirmed");
+  };
+
+  const finishOrder = () => {
+    setCheckoutOpen(false);
+    setCart([]);
+    toast({ title: "Order placed", description: "Thanks for shopping with On the Lip." });
+  };
 
   const addToBag = (p: Product) => {
     const flavor = selected[p.id];
