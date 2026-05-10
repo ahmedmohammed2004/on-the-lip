@@ -231,7 +231,10 @@ const Shop = () => {
                       </span>
                       <span className="font-serif text-2xl text-primary">{totalPrice} EGP</span>
                     </div>
-                    <Button className="mt-4 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    <Button
+                      onClick={openCheckout}
+                      className="mt-4 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
                       Checkout
                     </Button>
                   </SheetFooter>
