@@ -72,7 +72,7 @@ const products: Product[] = [
     image: lipTint,
     alt: "On the Lip — water-based hydrating lip tint",
     description: "A featherlight water-based tint that hydrates while it colors.",
-    flavors: ["Rose", "Strawberry", "Vanilla"],
+    flavors: ["Rose", "Strawberry"],
   },
 ];
 
