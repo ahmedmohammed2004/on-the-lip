@@ -215,7 +215,10 @@ const Index = () => {
                   "Water",
                   "Glycerin",
                   "Aloe Vera Gel",
-                  "Preservative",
+                  "Hydroxyethyl Cellulose",
+                  "Sweet Almond Oil",
+                  "Propylene Glycol",
+                  "Polysorbate 20",
                   "Food-Grade Dye",
                 ].map((ing) => (
                   <li key={ing} className="flex items-center gap-3 border-b border-border pb-2 text-sm">
