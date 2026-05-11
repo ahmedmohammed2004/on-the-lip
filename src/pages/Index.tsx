@@ -148,7 +148,7 @@ const Index = () => {
               <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
               <img
                 src={ingredients}
-                alt="On the Lip balm tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose and strawberry"
+                alt="On the Lip ointment tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose and strawberry"
                 width={1024}
                 height={1024}
                 loading="lazy"
