@@ -43,7 +43,7 @@ const Index = () => {
               <h1 className="font-serif text-5xl leading-[1.05] md:text-7xl">
                 On the Lip<span className="text-primary">.</span>
                 <br />
-                <em className="font-normal italic text-foreground/80">Your everyday balm, perfected.</em>
+                <em className="font-normal italic text-foreground/80">Your everyday ointment, perfected.</em>
               </h1>
               <p className="max-w-lg text-lg text-foreground/70">
                 A deeply nourishing ointment crafted with cold-pressed botanicals to soothe, protect,
