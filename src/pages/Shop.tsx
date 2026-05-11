@@ -88,7 +88,7 @@ type CartItem = {
 const Shop = () => {
   const [selected, setSelected] = useState<Record<string, string>>({
     ointment: "Rose",
-    tint: "Rose",
+    tint: "Strawberry",
   });
   const [cart, setCart] = useState<CartItem[]>([]);
   const [bagOpen, setBagOpen] = useState(false);
