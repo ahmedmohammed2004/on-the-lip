@@ -71,7 +71,7 @@ const Index = () => {
                 <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
                 <img
                   src={heroProduct}
-                  alt="On the Lip balm — round container and lipstick tube"
+                  alt="On the Lip ointment — round container and lipstick tube"
                   width={1280}
                   height={720}
                   className="relative z-10 w-full rounded-[2rem] object-cover"
