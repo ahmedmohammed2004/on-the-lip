@@ -256,7 +256,7 @@ const Index = () => {
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-foreground/70">
               On the Lip began in a tiny apothecary kitchen in 2025, when our founder couldn&apos;t find
-              a balm that actually worked without a list of ingredients she couldn&apos;t pronounce. So
+              an ointment that actually worked without a list of ingredients she couldn&apos;t pronounce. So
               she made one. Then made it better. Now it&apos;s yours.
             </p>
           </div>
