@@ -101,7 +101,7 @@ const Index = () => {
         <section id="product" className="container mx-auto px-6 py-24">
           <div className="reveal mx-auto max-w-2xl text-center">
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Why On the Lip</p>
-            <h2 className="font-serif text-4xl md:text-5xl">A balm that does more than balm.</h2>
+            <h2 className="font-serif text-4xl md:text-5xl">An ointment that does more.</h2>
             <p className="mt-5 text-foreground/70">
               Formulated by a small team of GUC students in Cairo, Egypt, every batch is hand-poured and
               tested for the way you actually live.
