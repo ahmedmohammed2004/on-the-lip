@@ -276,15 +276,15 @@ const Index = () => {
 
             <div className="mt-12 grid gap-4 md:grid-cols-5 md:grid-rows-3">
               {[
-                { title: "Key Partners", body: "Local botanical suppliers · Egyptian beekeepers · GUC labs · Small-batch packaging artisans", span: "md:col-span-1 md:row-span-2" },
-                { title: "Key Activities", body: "Hand-pouring batches · Sourcing botanicals · Quality testing · Community building on Instagram", span: "md:col-span-1 md:row-span-1" },
-                { title: "Value Propositions", body: "Five-ingredient lip ointment in two signature scents (Rose, Strawberry) plus a hydrating water-based lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
+                { title: "Key Partners", body: "Local botanical suppliers · Cosmetic-grade ingredient vendors · GUC labs · Small-batch packaging artisans", span: "md:col-span-1 md:row-span-2" },
+                { title: "Key Activities", body: "Hand-pouring batches · Formulating tints & ointments · Quality testing · Community building on Instagram", span: "md:col-span-1 md:row-span-1" },
+                { title: "Value Propositions", body: "A five-ingredient lip ointment in two signature scents (Rose, Strawberry), and a hydrating water-based Strawberry lip tint. Honest, gentle, locally crafted.", span: "md:col-span-1 md:row-span-2" },
                 { title: "Customer Relationships", body: "Personal · DM-based support · Loyal community on @_on_the_lip · Word of mouth", span: "md:col-span-1 md:row-span-1" },
                 { title: "Customer Segments", body: "GUC students · Young adults in Cairo · Clean-beauty enthusiasts · Gift buyers", span: "md:col-span-1 md:row-span-2" },
                 { title: "Key Resources", body: "Founders' formulation expertise · Trusted ingredient supply · Brand identity · Instagram presence", span: "md:col-span-1 md:row-span-1" },
                 { title: "Channels", body: "Instagram (@_on_the_lip) · Direct messages · Campus pop-ups · Friend referrals", span: "md:col-span-1 md:row-span-1" },
-                { title: "Cost Structure", body: "Raw botanicals · Packaging · Small-batch production · Marketing on social media", span: "md:col-span-2 md:row-span-1" },
-                { title: "Revenue Streams", body: "Lip ointment at 60 EGP · Lip tint at 50 EGP · Gift sets · Custom scent bundles", span: "md:col-span-3 md:row-span-1" },
+                { title: "Cost Structure", body: "Raw ingredients (cocoa butter, lanolin, sweet almond oil, polysorbate 20, etc.) · Packaging · Small-batch production · Social media marketing", span: "md:col-span-2 md:row-span-1" },
+                { title: "Revenue Streams", body: "Lip ointment at 60 EGP (Rose / Strawberry) · Strawberry lip tint at 50 EGP · Gift sets & bundles", span: "md:col-span-3 md:row-span-1" },
               ].map(({ title, body, span }, i) => (
                 <div
                   key={title}
