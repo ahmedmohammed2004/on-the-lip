@@ -42,6 +42,26 @@
     --shadow-warm: 0 30px 80px -20px hsl(18 35% 55% / 0.25);
 
     --gradient-warm: radial-gradient(ellipse at top, hsl(20 40% 94%) 0%, hsl(30 25% 97%) 60%);
+
+    /* Business Model Canvas tones — soft pastels */
+    --bmc-rose: 12 60% 92%;
+    --bmc-rose-fg: 10 45% 35%;
+    --bmc-peach: 28 70% 90%;
+    --bmc-peach-fg: 22 55% 32%;
+    --bmc-sand: 38 55% 90%;
+    --bmc-sand-fg: 32 45% 30%;
+    --bmc-sage: 80 25% 88%;
+    --bmc-sage-fg: 90 30% 25%;
+    --bmc-mint: 150 30% 90%;
+    --bmc-mint-fg: 160 35% 25%;
+    --bmc-sky: 200 45% 90%;
+    --bmc-sky-fg: 205 50% 28%;
+    --bmc-lilac: 270 35% 92%;
+    --bmc-lilac-fg: 270 30% 35%;
+    --bmc-blush: 340 50% 92%;
+    --bmc-blush-fg: 340 40% 35%;
+    --bmc-cream: 45 60% 92%;
+    --bmc-cream-fg: 35 45% 28%;
   }
 }
 
