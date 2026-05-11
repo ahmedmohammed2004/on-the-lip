@@ -43,7 +43,7 @@ const Index = () => {
               <h1 className="font-serif text-5xl leading-[1.05] md:text-7xl">
                 On the Lip<span className="text-primary">.</span>
                 <br />
-                <em className="font-normal italic text-foreground/80">Your everyday balm, perfected.</em>
+                <em className="font-normal italic text-foreground/80">Your everyday ointment, perfected.</em>
               </h1>
               <p className="max-w-lg text-lg text-foreground/70">
                 A deeply nourishing ointment crafted with cold-pressed botanicals to soothe, protect,
@@ -71,7 +71,7 @@ const Index = () => {
                 <div className="absolute -inset-6 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
                 <img
                   src={heroProduct}
-                  alt="On the Lip balm — round container and lipstick tube"
+                  alt="On the Lip ointment — round container and lipstick tube"
                   width={1280}
                   height={720}
                   className="relative z-10 w-full rounded-[2rem] object-cover"
@@ -101,7 +101,7 @@ const Index = () => {
         <section id="product" className="container mx-auto px-6 py-24">
           <div className="reveal mx-auto max-w-2xl text-center">
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">Why On the Lip</p>
-            <h2 className="font-serif text-4xl md:text-5xl">A balm that does more than balm.</h2>
+            <h2 className="font-serif text-4xl md:text-5xl">An ointment that does more.</h2>
             <p className="mt-5 text-foreground/70">
               Formulated by a small team of GUC students in Cairo, Egypt, every batch is hand-poured and
               tested for the way you actually live.
@@ -148,7 +148,7 @@ const Index = () => {
               <div className="absolute -inset-4 rounded-[2rem] bg-accent/40 blur-2xl animate-shimmer" />
               <img
                 src={ingredients}
-                alt="On the Lip balm tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose and strawberry"
+                alt="On the Lip ointment tin surrounded by cocoa butter, lanolin, white petrolatum, white wax, rose and strawberry"
                 width={1024}
                 height={1024}
                 loading="lazy"
@@ -256,7 +256,7 @@ const Index = () => {
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-foreground/70">
               On the Lip began in a tiny apothecary kitchen in 2025, when our founder couldn&apos;t find
-              a balm that actually worked without a list of ingredients she couldn&apos;t pronounce. So
+              an ointment that actually worked without a list of ingredients she couldn&apos;t pronounce. So
               she made one. Then made it better. Now it&apos;s yours.
             </p>
           </div>

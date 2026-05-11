@@ -62,7 +62,7 @@ const products: Product[] = [
     price: 60,
     image: heroProduct,
     alt: "On the Lip — botanical lip ointment",
-    description: "A five-ingredient botanical balm for deep hydration and a lasting barrier.",
+    description: "A five-ingredient botanical ointment for deep hydration and a lasting barrier.",
     flavors: ["Rose", "Strawberry"],
   },
   {
@@ -72,7 +72,7 @@ const products: Product[] = [
     image: lipTint,
     alt: "On the Lip — water-based hydrating lip tint",
     description: "A featherlight water-based tint that hydrates while it colors.",
-    flavors: ["Rose", "Strawberry"],
+    flavors: ["Strawberry"],
   },
 ];
 
@@ -88,7 +88,7 @@ type CartItem = {
 const Shop = () => {
   const [selected, setSelected] = useState<Record<string, string>>({
     ointment: "Rose",
-    tint: "Rose",
+    tint: "Strawberry",
   });
   const [cart, setCart] = useState<CartItem[]>([]);
   const [bagOpen, setBagOpen] = useState(false);
